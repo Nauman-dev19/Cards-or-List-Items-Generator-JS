@@ -3,8 +3,8 @@ function itemListGenerator() {
 	const cardContainer = document.querySelector(`[data-card-list]`);
 	//initializing cards properties and data
 	class Item {
-		constructor(Class, link, heading, para, imgSrc) {
-			this.Class = Class;
+		constructor(className, link, heading, para, imgSrc) {
+			this.className = className;
 			this.link = link;
 			this.heading = heading;
 			this.para = para;
@@ -21,8 +21,8 @@ function itemListGenerator() {
 			const itemPara = document.createElement(`p`);
 
 			//assign values to elements
-			item.classList.add(this.Class);
-			itemLink.href = this.href;
+			item.classList.add(this.className);
+			itemLink.href = this.link;
 			imageDiv.classList.add(`image-div`);
 			image.src = this.imgSrc;
 			itemHeading.textContent = this.heading;
@@ -38,29 +38,44 @@ function itemListGenerator() {
 	// creating objects for our items
 	const item1 = new Item(
 		`card`,
+		`#`,
 		`firest item`,
 		`first item para`,
-		`#`,
 		`../src/assets/images/image.png`
 	);
-	const item2 = new Item(
-		`card`,
-		`second item`,
-		`second item para`,
-		`#`,
-		`../src/assets/images/image.png`
-	);
-	const item3 = new Item(
-		`card`,
-		`third item`,
-		`third item para`,
-		`#`,
-		`../src/assets/images/image.png`
-	);
-	const itemArray = [item1, item2, item3];
-	itemArray.forEach((e) => {
-		e.itemCreateFunction();
-		console.log(e);
+	const itemsData = [
+		{
+			className: 'card',
+			link: '#',
+			heading: 'First Item',
+			para: 'First item para',
+			imgSrc: '../src/assets/images/image.png',
+		},
+		{
+			className: 'card',
+			link: '#',
+			heading: 'Second Item',
+			para: 'Second item para',
+			imgSrc: '../src/assets/images/image.png',
+		},
+		{
+			className: 'card',
+			link: '#',
+			heading: 'Third Item',
+			para: 'Third item para',
+			imgSrc: '../src/assets/images/image.png',
+		},
+	];
+	itemsData.forEach((data) => {
+		const item = new Item(
+			data.className,
+			data.link,
+			data.heading,
+			data.para,
+			data.imgSrc
+		);
+		item.itemCreateFunction();
+		console.log(data);
 	});
 }
 itemListGenerator();
