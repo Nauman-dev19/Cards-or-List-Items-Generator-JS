@@ -1,0 +1,25 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.item-list-container {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	padding: 44px;
+	gap: 10px;
+}
+.card {
+	border: 1px solid black;
+	padding: 12px;
+	line-height: 1.2;
+}
+.card .image-div {
+	width: minmax(120px, auto-fit);
+}
+.card img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
